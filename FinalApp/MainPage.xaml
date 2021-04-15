@@ -3,12 +3,46 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FinalApp"
+    xmlns:models="using:FinalApp.Models"
+    xmlns:viewmodels="using:FinalApp.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <viewmodels:PokemonViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="PokemonCollection" 
+                  Source="{x:Bind PMViewModel.Pokemons}"></CollectionViewSource>
+        <DataTemplate x:Name="PokemonTemplate" x:DataType="models:PokemonModel">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{x:Bind Name}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="380*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="FilterTextbox" 
+                 Text="{x:Bind PMViewModel.Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 PlaceholderText="Search Pokemon here..."
+                 FontSize="20" Margin="10" Height="50"
+                 Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"/>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="0,70,0,0">
+            <ListView VerticalAlignment="Top"
+                ItemsSource="{Binding Source={StaticResource PokemonCollection}}"
+                ItemTemplate="{Binding Source={StaticResource PokemonTemplate}}"
+                SelectedItem="{x:Bind PMViewModel.SelectedNote, Mode=TwoWay}"
+                ></ListView>
+        </ScrollViewer>
 
     </Grid>
 </Page>
