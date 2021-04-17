@@ -40,7 +40,7 @@
             <ListView VerticalAlignment="Top"
                 ItemsSource="{Binding Source={StaticResource PokemonCollection}}"
                 ItemTemplate="{Binding Source={StaticResource PokemonTemplate}}"
-                SelectedItem="{x:Bind PMViewModel.SelectedNote, Mode=TwoWay}"
+                SelectedItem="{x:Bind PMViewModel.SelectedPokemon, Mode=TwoWay}"
                 ></ListView>
         </ScrollViewer>
 

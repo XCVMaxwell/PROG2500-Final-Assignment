@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace FinalApp.Models
 {
     public class PokemonModel
     {
+        public string HP { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
-        public string Category { get; set; }
-        public string Description { get; set; }
-        public string Height { get; set; }
-        public string Weight { get; set; }
+        public string Number { get; set; }
+        public string[] Abilty { get; set; }
+        public string[] Attack { get; set; }
+        public string[] Weaknesses { get; set; }
+        public string ImageURL { get; set; }
 
-        public PokemonModel(string name, string type, string category, string desc, string height, string weight)
+        public PokemonModel(string hp, string name, string type, string number, string[] abilty, string[] attack, string[] weaknesses, string imageURL)
         {
+            this.HP = HP;
             this.Name = name;
             this.Type = type;
-            this.Category = category;
-            this.Description = desc;
-            this.Height = height;
-            this.Weight = weight;
+            this.Number = number;
+            this.Abilty = abilty;
+            this.Attack = attack;
+            this.Weaknesses = weaknesses;
+            this.ImageURL = imageURL;
         }
     }
 }

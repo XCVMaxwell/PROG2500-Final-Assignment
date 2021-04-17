@@ -9,6 +9,8 @@ using System.ComponentModel;
 using System.Linq;
 using Windows.Storage;
 using FinalApp.Models;
+using FinalApp.ViewModels;
+using FinalApp;
 
 namespace FinalApp.ViewModels
 {
