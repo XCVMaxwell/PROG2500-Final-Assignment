@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using FinalApp.ViewModels;
+using FinalApp.Models;
 
 namespace FinalApp.Models
 {
@@ -20,7 +22,7 @@ namespace FinalApp.Models
 
         public PokemonModel(string hp, string name, string type, string number, string[] abilty, string[] attack, string[] weaknesses, string imageURL)
         {
-            this.HP = HP;
+            this.HP = hp;
             this.Name = name;
             this.Type = type;
             this.Number = number;
