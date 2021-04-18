@@ -7,11 +7,14 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.ApplicationModel;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+using FinalApp.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +28,23 @@ namespace FinalApp
         public Description()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                AppViewBackButtonVisibility.Visible;
+
+            SystemNavigationManager.GetForCurrentView().BackRequested += About_BackRequested;
+        }
+
+        private void About_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+            e.Handled = true;
         }
     }
 }

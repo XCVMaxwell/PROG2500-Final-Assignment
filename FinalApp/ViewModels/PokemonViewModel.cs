@@ -14,7 +14,51 @@ namespace FinalApp.ViewModels
         public ObservableCollection<PokemonModel> Pokemons { get; set; }
         private List<PokemonModel> _allPokemon = new List<PokemonModel>();
 
+        public string PokemonNumber { get; set; }
+        public string PokemonHP { get; set; }
+        public string PokemonName { get; set; }
+        public string PokemonType { get; set; }
+        public string PokemonImage { get; set; }
+
+        private PokemonModel _selectedPokemon;
         private string _filter;
+
+        public PokemonViewModel() {
+
+            Pokemons = new ObservableCollection<PokemonModel>();
+
+            PerformFiltering();
+        }
+
+        public PokemonModel SelectedPokemon
+        {
+            get { return _selectedPokemon; }
+            set
+            {
+                _selectedPokemon = value;
+                if (value == null)
+                {
+                    PokemonNumber = "";
+                    PokemonHP = "";
+                    PokemonName = "No Pokemon selected";
+                    PokemonType = "";
+                    PokemonImage = "";
+                }
+                else
+                {
+                    PokemonNumber = value.Number;
+                    PokemonHP = value.HP;
+                    PokemonName = value.Name;
+                    PokemonType = value.Type;
+                    PokemonImage = value.ImageURL;
+                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonNumber"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonHP"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonName"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonType"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonImage"));
+            }
+        }
 
         public string Filter
         {

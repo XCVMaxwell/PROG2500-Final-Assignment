@@ -25,11 +25,18 @@ namespace FinalApp
     public sealed partial class MainPage : Page
     {
         public ViewModels.PokemonViewModel PMViewModel { get; set; }
+        public PokemonModel SelectedPokemon { get; set; }
 
         public MainPage()
         {
             this.InitializeComponent();
             this.PMViewModel = new PokemonViewModel();
+        }
+
+        private void DescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedPokemon = PMViewModel.SelectedPokemon;
+            Frame.Navigate(typeof(Description), SelectedPokemon);
         }
     }
 }

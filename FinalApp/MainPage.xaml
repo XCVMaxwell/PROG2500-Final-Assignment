@@ -26,23 +26,32 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130*"/>
-            <ColumnDefinition Width="380*"/>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="229*"/>
+            <ColumnDefinition Width="330*"/>
         </Grid.ColumnDefinitions>
 
         <TextBox x:Name="FilterTextbox" 
                  Text="{x:Bind PMViewModel.Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  PlaceholderText="Search Pokemon here..."
-                 FontSize="20" Margin="10" Height="50"
-                 Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"/>
+                 FontSize="20" Margin="10,10,10,0" Height="50" Grid.Column="0" VerticalAlignment="Top"/>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="0,70,0,0">
+        <ScrollViewer Grid.Column="0" Margin="0,70,0,0">
             <ListView VerticalAlignment="Top"
                 ItemsSource="{Binding Source={StaticResource PokemonCollection}}"
                 ItemTemplate="{Binding Source={StaticResource PokemonTemplate}}"
                 SelectedItem="{x:Bind PMViewModel.SelectedPokemon, Mode=TwoWay}"
                 ></ListView>
         </ScrollViewer>
+
+        <StackPanel Grid.Column="1" Margin="0,300,0,0">
+            <TextBlock x:Name="PokemonNumber" Width="430" Height="80" Text="{x:Bind SelectedPokemon.Number}"></TextBlock>
+            <TextBlock x:Name="PokemonName" Width="430" Height="80" Text="{x:Bind SelectedPokemon.Name}"></TextBlock>
+            <TextBlock x:Name="PokemonHP" Width="430" Height="80" Text="{x:Bind SelectedPokemon.HP}"></TextBlock>
+            <TextBlock x:Name="PokemonType" Width="430" Height="80" Text="{x:Bind SelectedPokemon.Type}"></TextBlock>
+            <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" Width="430" Height="80" FontSize="40" Content="More Info" Margin="15,0,0,0"/>
+        </StackPanel>
+        <Image Grid.Column="2" x:Name="PokemonImage"/>
 
     </Grid>
 </Page>
