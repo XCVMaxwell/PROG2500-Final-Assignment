@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using FinalApp.Models;
+using FinalApp.ViewModels;
 
 namespace FinalApp.ViewModels
 {

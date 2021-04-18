@@ -12,24 +12,19 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using FinalApp.Models;
-using FinalApp.ViewModels;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace FinalApp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class Description : Page
     {
-        public ViewModels.PokemonViewModel PMViewModel { get; set; }
-
-        public MainPage()
+        public Description()
         {
             this.InitializeComponent();
-            this.PMViewModel = new PokemonViewModel();
         }
     }
 }
