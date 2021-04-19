@@ -2,8 +2,7 @@
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using FinalApp.Models;
-using FinalApp.ViewModels;
+using PokemonTcgSdk.Models;
 
 namespace FinalApp.ViewModels
 {
@@ -11,8 +10,8 @@ namespace FinalApp.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<PokemonModel> Pokemons { get; set; }
-        private List<PokemonModel> _allPokemon = new List<PokemonModel>();
+        public ObservableCollection<PokemonCard> Pokemons { get; set; }
+        private List<PokemonCard> _allPokemon = new List<PokemonCard>();
 
         public string PokemonNumber { get; set; }
         public string PokemonHP { get; set; }
@@ -20,22 +19,29 @@ namespace FinalApp.ViewModels
         public string PokemonType { get; set; }
         public string PokemonImage { get; set; }
 
-        private PokemonModel _selectedPokemon;
+        private PokemonCard _selectedPokemon;
         private string _filter;
 
-        public PokemonViewModel() {
-
-            Pokemons = new ObservableCollection<PokemonModel>();
+        public PokemonViewModel()
+        {
+            _allPokemon = GetAllPokemon();
+            Pokemons = new ObservableCollection<PokemonCard>();
 
             PerformFiltering();
         }
 
-        public PokemonModel SelectedPokemon
+        public List<PokemonCard> GetAllPokemon()
+        {
+            return Repos.PokemonRepo.GetAllPokemonCards();
+        }
+
+        public PokemonCard SelectedPokemon
         {
             get { return _selectedPokemon; }
             set
             {
                 _selectedPokemon = value;
+
                 if (value == null)
                 {
                     PokemonNumber = "";
@@ -46,15 +52,16 @@ namespace FinalApp.ViewModels
                 }
                 else
                 {
-                    PokemonNumber = value.Number;
-                    PokemonHP = value.HP;
-                    PokemonName = value.Name;
-                    PokemonType = value.Type;
-                    PokemonImage = value.ImageURL;
+                    PokemonNumber = "Number: " + value.Number;
+                    PokemonName = "Name: " + value.Name;
+                    PokemonHP = "HP: " + value.Hp;
+                    PokemonType = "Types: " + value.Types[0] != null ? value.Types[0] : "No Types";
+                    PokemonImage = value.ImageUrl;
                 }
+
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonNumber"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonHP"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonName"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonHP"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonType"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonImage"));
             }

@@ -12,20 +12,15 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using FinalApp.Models;
 using FinalApp.ViewModels;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+using PokemonTcgSdk.Models;
 
 namespace FinalApp
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
-        public ViewModels.PokemonViewModel PMViewModel { get; set; }
-        public PokemonModel SelectedPokemon { get; set; }
+        public PokemonViewModel PMViewModel { get; set; }
+        public PokemonCard SelectedPokemon { get; set; }
 
         public MainPage()
         {
