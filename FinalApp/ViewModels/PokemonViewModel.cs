@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ namespace FinalApp.ViewModels
     public class PokemonViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler ImageChanged;
 
         public ObservableCollection<PokemonCard> Pokemons { get; set; }
         private List<PokemonCard> _allPokemon = new List<PokemonCard>();
@@ -61,7 +63,7 @@ namespace FinalApp.ViewModels
                     PokemonName = "Name: " + value.Name;
                     PokemonHP = "HP: " + value.Hp;
                     PokemonType = "Type: " + type;
-                    PokemonImage = value.ImageUrl;
+                    PokemonImage = value.ImageUrlHiRes;
 
                     IsPokemonSelected = true;
                 }
@@ -71,6 +73,7 @@ namespace FinalApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonHP"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonType"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonImage"));
+                ImageChanged?.Invoke(this, null);
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsPokemonSelected"));
             }

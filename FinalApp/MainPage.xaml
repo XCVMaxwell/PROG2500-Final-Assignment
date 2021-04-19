@@ -56,7 +56,13 @@
             <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" IsEnabled="{x:Bind PMViewModel.IsPokemonSelected, Mode=OneWay}" FontSize="20" Content="More Info" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10"/>
         </StackPanel>
 
-        <!--  Source="{x:Bind PokemonImage} -->
-        <Image x:Name="PokemonImage" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="625" Height="960"/>
+        <Image x:Name="PokemonImage" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="625" Height="960">
+            <!--
+            This does not work, tried it and kept erroring.
+            <Image.Source>
+                <BitmapImage UriSource="{x:Bind PMViewModel.PokemonImage}"/>
+            </Image.Source>
+            -->
+        </Image>
     </Grid>
 </Page>

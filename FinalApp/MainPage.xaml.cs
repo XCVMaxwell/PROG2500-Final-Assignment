@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Media.Imaging;
 using FinalApp.ViewModels;
 using PokemonTcgSdk.Models;
 
@@ -26,6 +27,17 @@ namespace FinalApp
         {
             this.InitializeComponent();
             this.PMViewModel = new PokemonViewModel();
+            PMViewModel.ImageChanged += PMViewModel_ImageChanged;
+        }
+
+        // Using event because setting source on image element didn't work.
+        private void PMViewModel_ImageChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                PokemonImage.Source = new BitmapImage(new Uri(PMViewModel.PokemonImage));
+            }
+            catch (UriFormatException ex) {}
         }
 
         private void DescriptionButton_Click(object sender, RoutedEventArgs e)
