@@ -12,10 +12,8 @@ namespace FinalApp.Repos
     {
         public static List<PokemonCard> GetAllPokemonCards()
         {
-            // For some reason there are not async methods so I only get base set cards
-            // else the program hangs for 3 minutes on launch getting all the cards
-            // From what I can tell there are supposed to be async versions of all methods
-            // but I can't use them https://github.com/PokemonTCG/pokemon-tcg-sdk-csharp
+            // https://github.com/PokemonTCG/pokemon-tcg-sdk-csharp
+            // No async methods on out of date version so limit all cards to base set.
             Dictionary<string, string> query = new Dictionary<string, string>()
             {
                 { "set", "Base" }
@@ -24,12 +22,12 @@ namespace FinalApp.Repos
             return Card.Get<Pokemon>(query).Cards;
         }
 
-        public static PokemonCard GetPokemonCard(string name, string set)
+        public static PokemonCard GetPokemonCard(string name)
         {
             Dictionary<string, string> query = new Dictionary<string, string>()
             {
                 { "name", name },
-                { "set", set }
+                { "set", "Base" }
             };
 
             return Card.Get<PokemonCard>(query);
