@@ -53,7 +53,7 @@
             <TextBlock x:Name="PokemonName" Height="80" Text="{x:Bind PMViewModel.PokemonName, Mode=OneWay}"></TextBlock>
             <TextBlock x:Name="PokemonHP" Height="80" Text="{x:Bind PMViewModel.PokemonHP, Mode=OneWay}"></TextBlock>
             <TextBlock x:Name="PokemonType" Height="80" Text="{x:Bind PMViewModel.PokemonType, Mode=OneWay}"></TextBlock>
-            <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" FontSize="40" Content="More Info" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10"/>
+            <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" IsEnabled="{x:Bind PMViewModel.IsPokemonSelected, Mode=OneWay}" FontSize="20" Content="More Info" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10"/>
         </StackPanel>
 
         <!--  Source="{x:Bind PokemonImage} -->

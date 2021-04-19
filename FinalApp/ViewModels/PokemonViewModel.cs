@@ -19,6 +19,7 @@ namespace FinalApp.ViewModels
         public string PokemonType { get; set; }
         public string PokemonImage { get; set; }
 
+        public bool IsPokemonSelected { get; set; } = false;
         private PokemonCard _selectedPokemon;
         private string _filter;
 
@@ -49,14 +50,20 @@ namespace FinalApp.ViewModels
                     PokemonName = "No Pokemon selected";
                     PokemonType = "";
                     PokemonImage = "";
+
+                    IsPokemonSelected = false;
                 }
                 else
                 {
+                    var type = value.Types != null ? value.Types[0] : "No Types";
+
                     PokemonNumber = "Number: " + value.Number;
                     PokemonName = "Name: " + value.Name;
                     PokemonHP = "HP: " + value.Hp;
-                    PokemonType = "Types: " + value.Types[0] != null ? value.Types[0] : "No Types";
+                    PokemonType = "Type: " + type;
                     PokemonImage = value.ImageUrl;
+
+                    IsPokemonSelected = true;
                 }
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonNumber"));
@@ -64,6 +71,8 @@ namespace FinalApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonHP"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonType"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonImage"));
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsPokemonSelected"));
             }
         }
 
