@@ -43,5 +43,10 @@ namespace FinalApp
         {
             Frame.Navigate(typeof(Description), PMViewModel.SelectedPokemon);
         }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
+        }
     }
 }

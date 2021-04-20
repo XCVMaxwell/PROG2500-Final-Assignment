@@ -54,6 +54,8 @@
             <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonType, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
             <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" IsEnabled="{x:Bind PMViewModel.IsPokemonSelected, Mode=OneWay}"
                     FontSize="32" Content="More Info" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Red" Foreground="White"/>
+            <Button x:Name="AboutButton" Click="About_Click" FontSize="22" Content="App Information" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,455,0,0" Background="Red" Foreground="White" IsEnabled="True"></Button>
+
         </StackPanel>
 
         <Image x:Name="PokemonImage" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="625" Height="1000"/>
