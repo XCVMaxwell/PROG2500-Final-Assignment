@@ -16,7 +16,8 @@ namespace FinalApp.Repos
             // No async methods on out of date version so limit all cards to base set.
             Dictionary<string, string> query = new Dictionary<string, string>()
             {
-                { "set", "Base" }
+                { "set", "Base" },
+                { "supertype", "Pokemon" }
             };
 
             return Card.Get<Pokemon>(query).Cards;

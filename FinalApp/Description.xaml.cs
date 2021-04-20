@@ -42,6 +42,33 @@ namespace FinalApp
             AppViewBackButtonVisibility.Visible;
 
             SystemNavigationManager.GetForCurrentView().BackRequested += About_BackRequested;
+
+            AbilityTextBox.Text = AbilityString();
+            AttackTextBox.Text = AttackString();
+        }
+
+        public string AttackString()
+        {
+            string attackString = "Attacks: \n";
+            if (SelectedCard.Attacks[0] != null)
+            {
+                for (int i = 0; i < SelectedCard.Attacks.Count(); i++)
+                {
+                    attackString += "\n" + (i + 1).ToString() + " - " + SelectedCard.Attacks[i].Name + "\n" + SelectedCard.Attacks[i].Text;
+                }
+            }
+            return attackString;
+        }
+
+        public string AbilityString()
+        {
+            string abilityString = "Abilities: ";
+            if (SelectedCard.Ability != null)
+            {
+                abilityString += SelectedCard.Ability.Name + " - " + SelectedCard.Ability.Text;
+            }
+
+            return abilityString;
         }
 
         private void About_BackRequested(object sender, BackRequestedEventArgs e)
