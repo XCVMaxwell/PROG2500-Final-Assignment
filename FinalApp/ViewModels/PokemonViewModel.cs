@@ -91,7 +91,7 @@ namespace FinalApp.ViewModels
             }
         }
 
-        private void PerformFiltering()
+        public void PerformFiltering()
         {
             if (_filter == null)
             {
