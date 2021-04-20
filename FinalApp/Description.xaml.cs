@@ -49,7 +49,9 @@ namespace FinalApp
 
         public string DescriptionString()
         {
-            string descriptionString = "Attacks:";
+            string descriptionString = "National Pokedex #: " + SelectedCard.NationalPokedexNumber + " - " + SelectedCard.Name + " - HP: " + SelectedCard.Hp + "\n\n";
+
+            descriptionString += "Attacks:";
             if (SelectedCard.Attacks[0] != null)
             {
                 for (int i = 0; i < SelectedCard.Attacks.Count(); i++)
