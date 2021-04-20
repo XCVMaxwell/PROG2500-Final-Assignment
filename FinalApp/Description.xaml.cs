@@ -43,32 +43,52 @@ namespace FinalApp
 
             SystemNavigationManager.GetForCurrentView().BackRequested += About_BackRequested;
 
-            AbilityTextBox.Text = AbilityString();
-            AttackTextBox.Text = AttackString();
+/*            AbilityTextBox.Text = AbilityString();*/
+            DescriptiontBox.Text = DescriptionString();
         }
 
-        public string AttackString()
+        public string DescriptionString()
         {
-            string attackString = "Attacks: \n";
+            string descriptionString = "Attacks:";
             if (SelectedCard.Attacks[0] != null)
             {
                 for (int i = 0; i < SelectedCard.Attacks.Count(); i++)
                 {
-                    attackString += "\n" + (i + 1).ToString() + " - " + SelectedCard.Attacks[i].Name + "\n" + SelectedCard.Attacks[i].Text;
+                    descriptionString += "\n" + (i + 1).ToString() + " - " + SelectedCard.Attacks[i].Name + "\n" + SelectedCard.Attacks[i].Text;
                 }
             }
-            return attackString;
-        }
 
-        public string AbilityString()
-        {
-            string abilityString = "Abilities: ";
+            descriptionString += "\nAbilities: ";
             if (SelectedCard.Ability != null)
             {
-                abilityString += SelectedCard.Ability.Name + " - " + SelectedCard.Ability.Text;
+                descriptionString += "\n" + SelectedCard.Ability.Name + " - " + SelectedCard.Ability.Text;
             }
 
-            return abilityString;
+            if (SelectedCard.Rarity != null)
+            {
+                descriptionString += "\n\nRarity: " + SelectedCard.Rarity;
+            }
+
+            descriptionString += "\n\nResistances: ";
+            if (SelectedCard.Resistances != null)
+            {
+
+                for (int i = 0; i < SelectedCard.Resistances.Count(); i++)
+                {
+                descriptionString += "\n" + SelectedCard.Resistances[i].Type;
+                }
+            }
+
+            descriptionString += "\n\nWeaknesses: ";
+            if (SelectedCard.Weaknesses != null)
+            {
+                for (int i = 0; i < SelectedCard.Weaknesses.Count(); i++)
+                {
+                    descriptionString += "\n" + SelectedCard.Weaknesses[i].Type;
+                }
+            }
+
+            return descriptionString;
         }
 
         private void About_BackRequested(object sender, BackRequestedEventArgs e)

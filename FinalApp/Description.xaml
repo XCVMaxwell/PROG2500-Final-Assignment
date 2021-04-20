@@ -12,32 +12,26 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="85*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="927*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="375*"/>
-            <ColumnDefinition Width="701*"/>
-            <ColumnDefinition Width="375*"/>
+            <ColumnDefinition Width="400*"/>
+            <ColumnDefinition Width="500*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="Assets/DescriptionBackground.png" Grid.ColumnSpan="3" Margin="-349,354,-199,-563" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        <Image Source="Assets/DescriptionBackground.png" Grid.ColumnSpan="2" Margin="-346,461,356,-281" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Image.RenderTransform>
                 <CompositeTransform Rotation="23.919"/>
             </Image.RenderTransform>
         </Image>
 
-        <Image Grid.Column="1" Grid.Row="0" Source="{x:Bind SelectedCard.ImageUrlHiRes}"></Image>
-
-        <StackPanel Grid.Row="0" Grid.Column="0" Background="White" BorderBrush="Black" BorderThickness="7">
-            <TextBox x:Name="AbilityTextBox" FontSize="24" Height="890" Background="White" Foreground="Black" IsEnabled="False" TextWrapping="Wrap"/>
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="2" Background="White" BorderBrush="Black" BorderThickness="7">
-            <TextBox x:Name="AttackTextBox" FontSize="24" Height="890" Background="White" Foreground="Black" IsEnabled="False" TextWrapping="Wrap"/>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Image Source="{x:Bind SelectedCard.ImageUrlHiRes}" Grid.RowSpan="2"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind SelectedCard.NationalPokedexNumber}" FontSize="50" Foreground="White"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind SelectedCard.Name}" FontSize="50" Foreground="White" Margin="320,0,0,0"></TextBlock>
+        <StackPanel Grid.Row="0" Grid.Column="1" Background="White">
+            <TextBox x:Name="DescriptiontBox" FontSize="24" Height="890" Background="White" Foreground="Black" IsEnabled="False" TextWrapping="Wrap"/>
+        </StackPanel>
 
     </Grid>
 </Page>
