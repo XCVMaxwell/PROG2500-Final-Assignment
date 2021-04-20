@@ -26,10 +26,16 @@ namespace FinalApp
         {
             this.InitializeComponent();
             this.PMViewModel = new PokemonViewModel();
+            //get pkmn imgae for view model
             PMViewModel.ImageChanged += PMViewModel_ImageChanged;
         }
 
-        // Using event because setting source on image element didn't work.
+        /// <summary>
+        /// Get images for PKMN by using event because setting source 
+        /// on image element didn't work.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PMViewModel_ImageChanged(object sender, EventArgs e)
         {
             try
@@ -38,12 +44,21 @@ namespace FinalApp
             }
             catch (UriFormatException ex) {}
         }
-
+        /// <summary>
+        /// Navigate to Discription
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DescriptionButton_Click(object sender, RoutedEventArgs e)
         {
+            //bring data of selected pokemon to description
             Frame.Navigate(typeof(Description), PMViewModel.SelectedPokemon);
         }
-
+        /// <summary>
+        /// Navigate to the AboutPage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void About_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AboutPage));
