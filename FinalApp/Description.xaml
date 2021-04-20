@@ -29,8 +29,8 @@
             <Image Source="{x:Bind SelectedCard.ImageUrlHiRes}" Grid.RowSpan="2"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Background="White">
-            <TextBox x:Name="DescriptiontBox" FontSize="24" Height="890" Background="White" Foreground="Black" IsEnabled="False" TextWrapping="Wrap"/>
+        <StackPanel Grid.Column="1" Background="White">
+            <TextBox x:Name="DescriptiontBox" FontSize="24" Height="890" Background="Black" Foreground="White" IsEnabled="False" TextWrapping="Wrap"/>
         </StackPanel>
 
     </Grid>

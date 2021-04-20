@@ -54,7 +54,14 @@ namespace FinalApp
             {
                 for (int i = 0; i < SelectedCard.Attacks.Count(); i++)
                 {
-                    descriptionString += "\n" + (i + 1).ToString() + " - " + SelectedCard.Attacks[i].Name + "\n" + SelectedCard.Attacks[i].Text;
+                    if (SelectedCard.Attacks[i].Text == null)
+                    {
+                        descriptionString += "\n" + (i + 1).ToString() + " - " + SelectedCard.Attacks[i].Name + "\n" + SelectedCard.Attacks[i].Text;
+                    }
+                    else
+                    {
+                        descriptionString += "\n" + (i + 1).ToString() + " - " + SelectedCard.Attacks[i].Name;
+                    }
                 }
             }
 
