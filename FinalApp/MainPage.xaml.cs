@@ -21,7 +21,6 @@ namespace FinalApp
     public sealed partial class MainPage : Page
     {
         public PokemonViewModel PMViewModel { get; set; }
-        public PokemonCard SelectedPokemon { get; set; }
 
         public MainPage()
         {
@@ -42,8 +41,7 @@ namespace FinalApp
 
         private void DescriptionButton_Click(object sender, RoutedEventArgs e)
         {
-            SelectedPokemon = PMViewModel.SelectedPokemon;
-            Frame.Navigate(typeof(Description), SelectedPokemon);
+            Frame.Navigate(typeof(Description), PMViewModel.SelectedPokemon);
         }
     }
 }

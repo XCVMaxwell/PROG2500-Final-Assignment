@@ -10,5 +10,31 @@
 
     <Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="375*"/>
+            <ColumnDefinition Width="701*"/>
+            <ColumnDefinition Width="375*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="Assets/DescriptionBackground.png" Grid.ColumnSpan="3" Margin="-279,-277,-334,-277" Grid.RowSpan="2"/>
+
+        <Image Grid.Column="1" Grid.Row="0" Source="{x:Bind SelectedCard.ImageUrlHiRes}"></Image>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Background="White" BorderBrush="Red" BorderThickness="10">
+            <TextBlock Text="Ability" FontSize="40" Foreground="Black"></TextBlock>
+            <TextBlock Height="80" Text="{x:Bind SelectedCard.Ability, Mode=OneWay}" FontSize="32" Foreground="Black"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" Background="White" BorderBrush="Red" BorderThickness="10">
+            <TextBlock Text="Attack" FontSize="40" Foreground="Black"></TextBlock>
+            <TextBlock Height="80" Text="{x:Bind SelectedCard.Attacks, Mode=OneWay}" FontSize="32" Foreground="Black"></TextBlock>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind SelectedCard.NationalPokedexNumber}" FontSize="54" Foreground="Black"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind SelectedCard.Name}" FontSize="54" Foreground="Black" Margin="0,0,15,0"></TextBlock>
+
     </Grid>
 </Page>

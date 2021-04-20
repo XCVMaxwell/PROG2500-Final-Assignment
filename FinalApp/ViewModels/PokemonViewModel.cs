@@ -19,6 +19,11 @@ namespace FinalApp.ViewModels
         public string PokemonHP { get; set; }
         public string PokemonName { get; set; }
         public string PokemonType { get; set; }
+        public string PokemonSubType { get; set; }
+        public string PokemonAbility { get; set; }
+        public string PokemonAbilityDesc { get; set; }
+        public string PokemonAttack { get; set; }
+        public string PokemonAttackDesc { get; set; }
         public string PokemonImage { get; set; }
 
         public bool IsPokemonSelected { get; set; } = false;
@@ -59,10 +64,19 @@ namespace FinalApp.ViewModels
                 {
                     var type = value.Types != null ? value.Types[0] : "No Types";
 
-                    PokemonNumber = "Number: " + value.Number;
+                    PokemonNumber = "Number: " + value.NationalPokedexNumber;
                     PokemonName = "Name: " + value.Name;
                     PokemonHP = "HP: " + value.Hp;
                     PokemonType = "Type: " + type;
+                    PokemonSubType = value.SubType;
+                    if (value.Ability != null) 
+                    {
+                        PokemonAbility = value.Ability.ToString();
+                    }
+                    if (value.Attacks != null)
+                    {
+                        PokemonAttack = value.Attacks[0].ToString();
+                    }
                     PokemonImage = value.ImageUrlHiRes;
 
                     IsPokemonSelected = true;
@@ -72,6 +86,9 @@ namespace FinalApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonName"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonHP"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonType"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonSubType"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonAbility"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonAttack"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonImage"));
                 ImageChanged?.Invoke(this, null);
 

@@ -10,13 +10,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.DataContext>
-        <viewmodels:PokemonViewModel/>
-    </Page.DataContext>
-
     <Page.Resources>
         <CollectionViewSource x:Name="PokemonCollection" Source="{x:Bind PMViewModel.Pokemons}"/>
-        
         <DataTemplate x:Name="PokemonTemplate" x:DataType="models:PokemonCard">
             <StackPanel Orientation="Horizontal" Margin="6">
                 <TextBlock Text="{x:Bind Name}"></TextBlock>
@@ -36,10 +31,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Image Source="Assets/PokemonBackground.jpg" Grid.ColumnSpan="3" Margin="-172,-280,-181,-242" Grid.RowSpan="2"></Image>
+
         <TextBox x:Name="FilterTextbox" 
                  Text="{x:Bind PMViewModel.Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  PlaceholderText="Search Pokemon here..."
                  FontSize="20" Margin="10" Height="50" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <StackPanel Background="Black" Opacity="0.5" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"/>
 
         <ScrollViewer Grid.Column="0" Grid.Row="1">
             <ListView VerticalAlignment="Top"
@@ -48,21 +47,15 @@
                 SelectedItem="{x:Bind PMViewModel.SelectedPokemon, Mode=TwoWay}"/>
         </ScrollViewer>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
-            <TextBlock x:Name="PokemonNumber" Height="80" Text="{x:Bind PMViewModel.PokemonNumber, Mode=OneWay}"></TextBlock>
-            <TextBlock x:Name="PokemonName" Height="80" Text="{x:Bind PMViewModel.PokemonName, Mode=OneWay}"></TextBlock>
-            <TextBlock x:Name="PokemonHP" Height="80" Text="{x:Bind PMViewModel.PokemonHP, Mode=OneWay}"></TextBlock>
-            <TextBlock x:Name="PokemonType" Height="80" Text="{x:Bind PMViewModel.PokemonType, Mode=OneWay}"></TextBlock>
-            <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" IsEnabled="{x:Bind PMViewModel.IsPokemonSelected, Mode=OneWay}" FontSize="20" Content="More Info" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10"/>
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="0,25,0,0">
+            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonNumber, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
+            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonName, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
+            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonHP, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
+            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonType, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
+            <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" IsEnabled="{x:Bind PMViewModel.IsPokemonSelected, Mode=OneWay}"
+                    FontSize="32" Content="More Info" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Red" Foreground="White"/>
         </StackPanel>
 
-        <Image x:Name="PokemonImage" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="625" Height="960">
-            <!--
-            This does not work, tried it and kept erroring.
-            <Image.Source>
-                <BitmapImage UriSource="{x:Bind PMViewModel.PokemonImage}"/>
-            </Image.Source>
-            -->
-        </Image>
+        <Image x:Name="PokemonImage" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="625" Height="1000"/>
     </Grid>
 </Page>
