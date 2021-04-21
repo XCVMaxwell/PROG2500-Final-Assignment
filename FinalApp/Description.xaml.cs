@@ -62,7 +62,7 @@ namespace FinalApp
             {
                 for (int i = 0; i < SelectedCard.Attacks.Count(); i++)
                 {
-                    if (SelectedCard.Attacks[i].Text == null)
+                    if (SelectedCard.Attacks[i].Text != null)
                     {
                         descriptionString += "\n" + (i + 1).ToString() + " - " + SelectedCard.Attacks[i].Name + "\n" + SelectedCard.Attacks[i].Text;
                     }
@@ -73,15 +73,19 @@ namespace FinalApp
                 }
             }
             //list the pkmn's ability and the effect it does
-            descriptionString += "\nAbilities: ";
+            descriptionString += "\n\nAbilities: ";
             if (SelectedCard.Ability != null)
             {
                 descriptionString += "\n" + SelectedCard.Ability.Name + " - " + SelectedCard.Ability.Text;
             }
+            else
+            {
+                descriptionString += "\nNo abilities";
+            }
             //return how rare of a card it is 
             if (SelectedCard.Rarity != null)
             {
-                descriptionString += "\n\nRarity: " + SelectedCard.Rarity;
+                descriptionString += "\n\nRarity:\n" + SelectedCard.Rarity;
             }
             //show what types the pkmn 
             descriptionString += "\n\nResistances: ";
@@ -93,6 +97,10 @@ namespace FinalApp
                 descriptionString += "\n" + SelectedCard.Resistances[i].Type;
                 }
             }
+            else
+            {
+                descriptionString += "\nNo resistances";
+            }
             //show what types the pkmn is weak against
             descriptionString += "\n\nWeaknesses: ";
             if (SelectedCard.Weaknesses != null)
@@ -101,6 +109,10 @@ namespace FinalApp
                 {
                     descriptionString += "\n" + SelectedCard.Weaknesses[i].Type;
                 }
+            }
+            else
+            {
+                descriptionString += "\nNo weaknesses";
             }
 
             return descriptionString;
