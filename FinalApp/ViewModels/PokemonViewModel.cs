@@ -15,7 +15,7 @@ namespace FinalApp.ViewModels
 
         public ObservableCollection<PokemonCard> Pokemons { get; set; }
         private List<PokemonCard> _allPokemon = new List<PokemonCard>();
-
+        //pkmn model stats and images
         public string PokemonNumber { get; set; }
         public string PokemonHP { get; set; }
         public string PokemonName { get; set; }
@@ -25,7 +25,9 @@ namespace FinalApp.ViewModels
         public bool IsPokemonSelected { get; set; } = false;
         private PokemonCard _selectedPokemon;
         private string _filter;
-
+        /// <summary>
+        /// Add data to collection and filter through it
+        /// </summary>
         public PokemonViewModel()
         {
             _allPokemon = GetAllPokemon();
@@ -33,19 +35,24 @@ namespace FinalApp.ViewModels
 
             PerformFiltering();
         }
-
+        /// <summary>
+        /// Return list of all pkmn cards from the api
+        /// </summary>
+        /// <returns></returns>
         public List<PokemonCard> GetAllPokemon()
         {
             return Repos.PokemonRepo.GetAllPokemonCards();
         }
-
+        /// <summary>
+        /// Get info from selected pkmn
+        /// </summary>
         public PokemonCard SelectedPokemon
         {
             get { return _selectedPokemon; }
             set
             {
                 _selectedPokemon = value;
-
+                // if no pkmn selected, return empty dummy data
                 if (value == null)
                 {
                     PokemonNumber = "";
@@ -58,8 +65,8 @@ namespace FinalApp.ViewModels
                 }
                 else
                 {
+                    //if pkmn selected, get pkmn stats and image from api
                     var type = value.Types != null ? value.Types[0] : "No Types";
-
                     PokemonNumber = "Number: " + value.NationalPokedexNumber;
                     PokemonName = "Name: " + value.Name;
                     PokemonHP = "HP: " + value.Hp;
@@ -68,7 +75,7 @@ namespace FinalApp.ViewModels
 
                     IsPokemonSelected = true;
                 }
-
+                //update data bind values
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonNumber"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonName"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PokemonHP"));
@@ -79,7 +86,9 @@ namespace FinalApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsPokemonSelected"));
             }
         }
-
+        /// <summary>
+        /// Return filtered list
+        /// </summary>
         public string Filter
         {
             get { return _filter; }
@@ -91,7 +100,9 @@ namespace FinalApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Filter)));
             }
         }
-
+        /// <summary>
+        /// Filter list by pkmn name
+        /// </summary>
         public void PerformFiltering()
         {
             if (_filter == null)
@@ -102,7 +113,7 @@ namespace FinalApp.ViewModels
             //Lower-case and trim string
             var lowerCaseFilter = Filter.ToLowerInvariant().Trim();
 
-            //Use LINQ query to get all personmodel names that match filter text, as a list
+            //Use LINQ query to get all pkmnmodel names that match filter text, as a list
             var result =
                 _allPokemon.Where(d => d.Name.ToLowerInvariant()
                 .Contains(lowerCaseFilter))
