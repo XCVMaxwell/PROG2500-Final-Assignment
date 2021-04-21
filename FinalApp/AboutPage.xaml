@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <ScrollViewer>
-        <StackPanel Padding="30">
+        <StackPanel Padding="30" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="About PokeDex" FontSize="32" TextWrapping="WrapWholeWords"/>
             <TextBlock Name="appTitle" FontSize="28" TextWrapping="WrapWholeWords"/>
             <TextBlock Name="appVersion" FontSize="28" TextWrapping="WrapWholeWords"/>
