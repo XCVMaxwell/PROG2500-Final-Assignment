@@ -28,21 +28,25 @@ namespace FinalApp
             this.InitializeComponent();
             AboutInformation();
         }
-
+        /// <summary>
+        /// Controls for back button
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            //Display back button
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
             AppViewBackButtonVisibility.Visible;
 
+            //Call About_BackRequested function to navigate to Main Page
             SystemNavigationManager.GetForCurrentView().BackRequested += About_BackRequested;
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(MainPage));
-        }
-
+        /// <summary>
+        /// return to MainPage from About Page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void About_BackRequested(object sender, BackRequestedEventArgs e)
         {
             if (Frame.CanGoBack)
@@ -51,6 +55,9 @@ namespace FinalApp
             }
             e.Handled = true;
         }
+        /// <summary>
+        /// Displaying information about the app such as the authors
+        /// </summary>
         private void AboutInformation()
         {
             AboutPad.Text = "C# Final Assignment - PokeDex\nAuthors: Cole Rhyno-Wiedemann, Kingsly Cooper," +
