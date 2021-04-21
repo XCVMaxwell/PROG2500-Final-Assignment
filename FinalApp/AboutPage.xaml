@@ -8,11 +8,14 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Padding="30">
-        <TextBlock Text="About PokeDex" FontSize="32" TextWrapping="WrapWholeWords"/>
-        <TextBlock Name="appTitle" FontSize="28" TextWrapping="WrapWholeWords"/>
-        <TextBlock Name="appVersion" FontSize="28" TextWrapping="WrapWholeWords"/>
-        <TextBlock Name="appPublisher" FontSize="28" TextWrapping="WrapWholeWords"/>
-        <TextBlock Name="appGroupMembers" FontSize="28" TextWrapping="WrapWholeWords"/>
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel Padding="30">
+            <TextBlock Text="About PokeDex" FontSize="32" TextWrapping="WrapWholeWords"/>
+            <TextBlock Name="appTitle" FontSize="28" TextWrapping="WrapWholeWords"/>
+            <TextBlock Name="appVersion" FontSize="28" TextWrapping="WrapWholeWords"/>
+            <TextBlock Name="appPublisher" FontSize="28" TextWrapping="WrapWholeWords"/>
+            <TextBlock Name="appGroupMembers" FontSize="28" TextWrapping="WrapWholeWords"/>
+            <TextBlock Name="appGitRepo" Text="Git Repo: https://github.com/XCVMaxwell/PROG2500-Final-Assignment" FontSize="28" TextWrapping="WrapWholeWords"/>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

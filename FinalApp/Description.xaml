@@ -23,6 +23,8 @@
             <Image Grid.Column="0" Source="{x:Bind SelectedCard.ImageUrlHiRes}"/>
         </Grid>
 
-        <TextBlock Padding="20" Grid.Column="1" x:Name="DescriptiontBox" FontSize="24" TextWrapping="WrapWholeWords"/>
+        <ScrollViewer Grid.Column="1">
+            <TextBlock Padding="20" x:Name="DescriptiontBox" FontSize="24" TextWrapping="WrapWholeWords" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        </ScrollViewer>
     </Grid>
 </Page>

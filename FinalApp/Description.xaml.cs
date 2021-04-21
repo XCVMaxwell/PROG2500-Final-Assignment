@@ -55,7 +55,7 @@ namespace FinalApp
         /// <returns></returns>
         public string DescriptionString()
         {
-            string descriptionString = "National Pokedex #: " + SelectedCard.NationalPokedexNumber + " - " + SelectedCard.Name + " - HP: " + SelectedCard.Hp + "\n\n";
+            string descriptionString = "National Pokedex #" + SelectedCard.NationalPokedexNumber + " - " + SelectedCard.Name + " - HP: " + SelectedCard.Hp + "\n\n";
             //list all attacks the pokemon has
             descriptionString += "Attacks:";
             if (SelectedCard.Attacks[0] != null)
