@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -14,13 +15,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace FinalApp
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AboutPage : Page
     {
         public AboutPage()
@@ -60,9 +56,12 @@ namespace FinalApp
         /// </summary>
         private void AboutInformation()
         {
-            AboutPad.Text = "C# Final Assignment - PokeDex\nAuthors: Cole Rhyno-Wiedemann, Kingsly Cooper," +
-                " Max Muir, Aaron Thomas\n\nAssembly Name: FinalApp\nDefault Namespace: FinalApp \n\nTarget:" +
-                " Universal Windows\nTarget Version: Windows 10, version 1903 \nMinimum Version: Windows 10, version 1809";
+            Package package = Package.Current;
+
+            appTitle.Text = $"Name: {package.DisplayName}";
+            appVersion.Text = $"Version: {package.Id.Version.Major}.{package.Id.Version.Minor}.{package.Id.Version.Build}";
+            appPublisher.Text = $"Publisher: {package.PublisherDisplayName}";
+            appGroupMembers.Text = "Group Members: Cole Rhyno-Wiedemann, Kingsly Cooper, Max Muir, Aaron Thomas";
         }
     }
 }

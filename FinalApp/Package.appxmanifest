@@ -14,8 +14,8 @@
   <mp:PhoneIdentity PhoneProductId="6e2c8ddf-0831-4ece-b9c1-316c9faf87c9" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>FinalApp</DisplayName>
-    <PublisherDisplayName>maxmu</PublisherDisplayName>
+    <DisplayName>PokeDex</DisplayName>
+    <PublisherDisplayName>Most Awesome Group</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,10 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="FinalApp.App">
       <uap:VisualElements
-        DisplayName="FinalApp"
+        DisplayName="PokeDex"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="FinalApp"
+        Description="PokeDex Application"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

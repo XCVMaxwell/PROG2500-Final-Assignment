@@ -14,16 +14,16 @@
         <CollectionViewSource x:Name="PokemonCollection" Source="{x:Bind PMViewModel.Pokemons}"/>
         <DataTemplate x:Name="PokemonTemplate" x:DataType="models:PokemonCard">
             <StackPanel Orientation="Horizontal" Margin="6">
-                <TextBlock Text="{x:Bind Name}"></TextBlock>
+                <TextBlock Text="{x:Bind Name}"/>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MaxWidth="300" MinWidth="250"/>
+            <ColumnDefinition Width="*" MaxWidth="500" MinWidth="400"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -31,7 +31,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Image Source="Assets/PokemonBackground.jpg" Grid.ColumnSpan="3" Margin="-172,-280,-181,-242" Grid.RowSpan="2"></Image>
+        <Image Source="Assets/PokemonBackground.jpg" Grid.ColumnSpan="3" Margin="-275" Grid.RowSpan="2"/>
 
         <TextBox x:Name="FilterTextbox" 
                  Text="{x:Bind PMViewModel.Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -48,16 +48,18 @@
         </ScrollViewer>
 
         <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="0,25,0,0">
-            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonNumber, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
-            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonName, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
-            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonHP, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
-            <TextBlock Height="80" Text="{x:Bind PMViewModel.PokemonType, Mode=OneWay}" FontSize="32" Foreground="White"></TextBlock>
+            <TextBlock Text="{x:Bind PMViewModel.PokemonNumber, Mode=OneWay}" FontSize="32" Foreground="White" Padding="15"/>
+            <TextBlock Text="{x:Bind PMViewModel.PokemonName, Mode=OneWay}" FontSize="32" Foreground="White" Padding="15"/>
+            <TextBlock Text="{x:Bind PMViewModel.PokemonHP, Mode=OneWay}" FontSize="32" Foreground="White" Padding="15"/>
+            <TextBlock Text="{x:Bind PMViewModel.PokemonType, Mode=OneWay}" FontSize="32" Foreground="White" Padding="15"/>
             <Button x:Name="DescriptionButton" Click="DescriptionButton_Click" IsEnabled="{x:Bind PMViewModel.IsPokemonSelected, Mode=OneWay}"
-                    FontSize="32" Content="More Info" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Red" Foreground="White"/>
-            <Button x:Name="AboutButton" Click="About_Click" FontSize="22" Content="App Information" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,455,0,0" Background="Red" Foreground="White" IsEnabled="True"></Button>
-
+                    FontSize="32" Content="More Info" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Red" Foreground="White"/>
         </StackPanel>
 
-        <Image x:Name="PokemonImage" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="625" Height="1000"/>
+        <Button x:Name="AboutButton" Click="About_Click" FontSize="22" Content="App Information" Background="Red" Foreground="White" Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+        <Grid Grid.Column="2" Grid.Row="1" Padding="20">
+            <Image x:Name="PokemonImage" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
     </Grid>
 </Page>

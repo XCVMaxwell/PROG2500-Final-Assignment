@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
 using FinalApp.ViewModels;
 using PokemonTcgSdk.Models;
+using Windows.UI.Core;
 
 namespace FinalApp
 {
@@ -62,6 +63,15 @@ namespace FinalApp
         private void About_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AboutPage));
+        }
+
+        /// <summary>
+        /// Removes back button when navigated to
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
     }
 }

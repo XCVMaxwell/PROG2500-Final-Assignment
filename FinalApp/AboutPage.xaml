@@ -8,12 +8,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="43*"/>
-            <ColumnDefinition Width="207*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox IsReadOnly="True" Name="AboutPad" Grid.Row="0" TextWrapping="Wrap" FontSize="18"  Margin="10,10,0,0" Grid.ColumnSpan="2"/>
-    </Grid>
+    <StackPanel Padding="30">
+        <TextBlock Text="About PokeDex" FontSize="32" TextWrapping="WrapWholeWords"/>
+        <TextBlock Name="appTitle" FontSize="28" TextWrapping="WrapWholeWords"/>
+        <TextBlock Name="appVersion" FontSize="28" TextWrapping="WrapWholeWords"/>
+        <TextBlock Name="appPublisher" FontSize="28" TextWrapping="WrapWholeWords"/>
+        <TextBlock Name="appGroupMembers" FontSize="28" TextWrapping="WrapWholeWords"/>
+    </StackPanel>
 </Page>
