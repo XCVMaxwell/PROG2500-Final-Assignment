@@ -61,7 +61,7 @@
         <Button x:Name="AboutButton" Click="About_Click" FontSize="26" Margin="10" Content="About" Background="Red" Foreground="White" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
         <Grid Grid.Column="2" Grid.Row="1" Padding="20">
-            <Image x:Name="PokemonImage" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Image x:Name="PokemonImage" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>
